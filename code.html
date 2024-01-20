@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="input">
+      <input id="v" type="text" placeholder="enter in lowercase" />
+    </div>
+
+    <br /><br />
+    <div id="button">
+      <button onclick="play(document.getElementById('v').value)">submit</button>
+    </div>
+    <div id="result"></div>
+    <script>
+      const rock = "rock";
+      const paper = "paper";
+      const scissor = "scissor";
+
+      function play(userChoice) {
+        const choice = [rock, paper, scissor];
+        const computerChoice = choice[Math.floor(Math.random() * 3)];
+        let result = "";
+
+        if (computerChoice === userChoice) {
+          result = "tie";
+        } else if (
+          (userChoice === rock && computerChoice === scissor) ||
+          (userChoice === paper && computerChoice === rock) ||
+          (userChoice === scissor && computerChoice === paper)
+        ) {
+          result = "you win";
+        } else {
+          result = "you lose";
+        }
+
+        document.getElementById("result").innerHTML = `
+        <p>You chose: ${userChoice}</p>
+        <p>Computer chose: ${computerChoice}</p>
+        <p>${result}</p>`;
+      }
+    </script>
+  </body>
+</html>
